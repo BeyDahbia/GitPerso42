@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<libft.h>
+//#include<libft.h>
 #include<stdlib.h>
 #include<unistd.h>
 #include<stdarg.h>
-#include <stdarg.h>
 
 struct s_printf
 {
