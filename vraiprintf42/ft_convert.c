@@ -41,6 +41,15 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 }
 ///////////////////////////////////////////////////////
+
+void ft_print_I(va_list *my_list)
+{
+	int number;
+
+	number = va_arg(*my_list, int);
+	ft_putnbr_fd(number, 1);
+}
+
 void ft_print_D(va_list *my_list)
 {
 	int number;
@@ -49,7 +58,7 @@ void ft_print_D(va_list *my_list)
 	ft_putnbr_fd(number, 1);
 }
 
-void ft_printf_C(va_list *my_list)
+void ft_print_C(va_list *my_list)
 {
 	char c;
 
@@ -57,7 +66,7 @@ void ft_printf_C(va_list *my_list)
 	write (1, &c, 1);
 }
 
-void ft_printf_S(va_list *my_list)
+void ft_print_S(va_list *my_list)
 {
 	char *src;
 
@@ -65,7 +74,7 @@ void ft_printf_S(va_list *my_list)
 	write (1, src, ft_strlen(src));
 }
 
-void ft_printf_P(va_list *my_list)
+void ft_print_P(va_list *my_list)
 {
 	char c;
 
@@ -73,7 +82,7 @@ void ft_printf_P(va_list *my_list)
 	write (1, &c, 1);
 }
 
-void ft_printf_x(va_list *my_list)
+void ft_print_x(va_list *my_list)
 {
 	char c;
 
@@ -82,7 +91,7 @@ void ft_printf_x(va_list *my_list)
 }
 
 
-void ft_printf_X(va_list *my_list)
+void ft_print_X(va_list *my_list)
 {
 	char c;
 

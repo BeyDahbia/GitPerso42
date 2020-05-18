@@ -29,9 +29,8 @@ int	ft_printf(const char *src, ...)
 {
 	int i;
 	int index;
-	char type_printf[8] = {'i', 'd', 'c', 's', 'p', 'x', 'X', 0};
-	(void) (*function_tab[7])(va_list *my_list) = {ft_printf_D, ft_printf_D, ft_printf_C,
-			 ft_printf_S, ft_printf_P, ft_printf_x, ft_printf_X};
+	void (*function_tab[7])(va_list *) = {ft_print_I, ft_print_D, ft_print_C, ft_print_S, ft_print_P, ft_print_x, ft_print_X};
+	char type_print[8] = {'i', 'd', 'c', 's', 'p', 'x', 'X', 0};
 
 	i = 0;
 	index = 0;
@@ -41,7 +40,7 @@ int	ft_printf(const char *src, ...)
 	{
 		if (i != 0 && src[i - 1] == '%')
 		{
-			index = ft_tofind(src[i], type_printf);
+			index = ft_tofind(src[i], type_print);
 			if (index != -1)
 				(*function_tab[index])(&my_list);
 		}
@@ -50,4 +49,17 @@ int	ft_printf(const char *src, ...)
 				write (1, &src[i], 1);
 		i++;
 	}
+	va_end(my_list);
+	return(0);
 }
+
+/* test de definition de fo,ction separaer de l'initialisation
+	 void (*function_tab[7])(va_list *);
+	 (*function_tab[0]) = ft_print_D;
+	 (*function_tab[1]) = ft_print_D;
+	 (*function_tab[2]) = ft_print_C;
+	 (*function_tab[3]) = ft_print_S;
+	 (*function_tab[4]) = ft_print_P;
+	 (*function_tab[5]) = ft_print_x;
+	 (*function_tab[6]) = ft_print_X;
+	 */
